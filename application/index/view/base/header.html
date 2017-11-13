@@ -1,0 +1,59 @@
+<?php $id = input('id'); $pid = input('pid'); $cid=input('cid');?>
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		{empty name = '$id'}
+		<link type="text/css" rel="stylesheet" href="/static/index/css/index.css">
+		{else /}
+	
+		
+        <link type="text/css" rel="stylesheet" href="/static/index/css/winning_numbers.css"/>
+        {/empty}
+       
+		<link type="text/css" rel="stylesheet" href="/static/index/css/common.css" />		
+		<script type="text/javascript" src="/static/index/js/jquery-1.11.1.min.js"></script>		
+        <script type="text/javascript" src="/static/index/js/jedate-6.0.0/layDate-v5.0.7/laydate/laydate.js"></script>
+		<title>[title]</title>
+	</head>
+
+	<body>
+
+		<div class="box">
+			<!--顶部信息-->
+			<div class="header">
+				<p class="header_content">
+					Hello! Welcome to the lottery
+				</p>
+			</div>
+			
+			
+		
+			<style>
+				.nav>li:nth-child(2){
+					width: auto;
+				}
+			</style>
+			<!--顶部信息-->
+			<div class="main">
+				<ul class="nav">
+					<?php $nav = get_nav();?> 
+						{volist name="nav" id ="v"}
+					<li>
+						<a href="<?=url($v['link'],['id'=>$v['id']])?>">
+							<img src="<?=$v.pic?>" alt="">
+							{if condition="$id eq $v['id']"}
+							<span style="color: white;"> <?=$v['title']?></span>
+							{else /}
+							<span class="nav1"> <?=$v['title']?></span>
+							{/if}
+						</a>
+					</li>
+					{/volist}
+				</ul>
+				<!--logo-->
+				<a class="home" href="/">
+					<img src="<?=$SITE_LOGO?>" alt="" class="logo">
+				</a>
+				<!--logo-->

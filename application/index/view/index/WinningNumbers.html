@@ -1,0 +1,172 @@
+{include file="base:header" title="winning numbers"}
+<style type="text/css">
+	#layui-laydate1{
+		width: 100%;
+		height: 100%;
+	}
+	.layui-laydate-main{
+		width: 100%;
+	}
+	.laydate-footer-btns .laydate-btns-confirm{
+		display:none;
+	}
+</style>
+
+<!--主体左侧-->
+<div class="main_left">
+	<p class="title">
+		Keno Winning Numbers
+	</p>
+
+	<p class="select_date">
+		Select a Date to vlew
+	</p>
+	<div class="calendar">
+		<span class="date"></span>
+	</div>
+	<div class="search_date">
+		<form action="" method="post">
+			<label for="search_num">Search by Draw Number</label>
+			<input type="text" id="search_num" name="number"/>
+			<label for="show_num">Number of draw to show</label>
+			<input type="number" value="1" id="show_num" name="key"/>
+			<input type="submit" value="Search" onclick="search();return false;" />
+		</form>
+	</div>
+
+	<div class="show_recent">
+		<a href="">Show Most Recent</a>
+		<ul>
+			<li>
+				<a href="javascript:vodie(0)">10</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">50</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">100</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">ALL</a>
+			</li>
+		</ul>
+		<span>Results per Page: </span>
+
+	</div>
+
+	<i class="time_title"><?=date('F d,Y',time())?></i>
+
+	<ul class="winning_numbers" id="tt">
+		{volist name="db" id = "v" key="k1"}
+		<li>
+			<h4>Draw #<?=$v['key']?>/<?=date('H:i:s',$v['add_time'])?></h4>
+			<p>
+				<?=$v['title']?>
+			</p>
+
+			{volist name ="list" id="vo"  key="k2"}
+			{if condition="$k1 eq $k2"}
+			<ul>
+				{volist name ="vo" id="k"}
+				<li>
+					<?=$k?>
+				</li>
+				{/volist}
+			</ul>
+			{/if}
+			{/volist}
+		</li>
+		{/volist}
+	</ul>
+	<?=$page?>
+</div>
+<style>
+	.pagination{
+		text-align: center;
+		font-size: 14px;
+		height: 24px;
+
+	}
+	.pagination li{
+		margin-right: 20px;
+		display:inline;
+	}
+	.pagination li a:hover{
+		color: #0E8F61;
+	}
+</style>
+<!--主体左侧-->
+
+<!--主体右侧区域-->
+<div class="main_right">
+	<i>Recent Winners</i>
+	<h4>￥<?=$news_list[0]['max1']?></h4>
+	<p>Total Lottery Prizes Won Last Year in BC</p>
+
+	<ul class="winners_list">
+		{volist name ="list1" id ="v"}
+		<li>
+			<ul>
+				<li><img src="<?=$v['pic']?>" alt="" /></li>
+				<li>￥<?=$v['keywords']?></li>
+				<li><?=$v['from']?></li>
+				<li><?=$v['description']?></li>
+			</ul>
+		</li>
+		{/volist}
+	</ul>
+</div>
+<!--主体右侧区域-->
+
+</div>
+<!--主体内容-->
+{include file="base:footer"}
+
+<script type="text/javascript" src="/static/index/js/laydate.js"></script>
+<script type="text/javascript">
+    laydate.render({
+        elem: '.calendar', //指定元素
+        position:"static",
+        change:function (value,data) {
+            lay('.date').html(value);
+            //var ss=$(".date").html();
+            //alert(ss);
+        },
+        lang:"en"
+    });
+    function search(){
+        var url = '/index/index/goods';
+        var DateTime = $(".date").html();
+        var SearchNum = $("#search_num").val();
+        var ShowNum = $('#show_num').val();
+        //alert(url);
+		/*$.post(url,{time:DateTime,sernumber:SearchNum,snumber:ShowNum},function (data){
+
+		 });*/
+        $("<div></div>").load(url,{time:DateTime,sernumber:SearchNum,snumber:ShowNum},function(data){
+            var dat = $(this).find("#tt").html();
+            $("#tt").html(dat);
+            $(this).remove();
+        })
+        // alert(url);
+    }
+    if(!window.name){
+        window.name = 'test';
+        //alert("第一次开这个窗口！name值"+ window.name);
+        myajax();
+    }else{
+        //alert('bushi');
+        setInterval(function(){myajax()},210000);
+    }
+    function myajax(){
+        $.ajax({ url: "/index/index/AjaxAddAll/", success: function(){
+            window.location.href="/index/index/goods/id/89";
+        }});
+    }
+    $(".show_recent ul li a").click(function(){
+        var aa = $(this).html();
+        var url = '/index/index/goods/';
+        alert(aa);
+    });
+</script>
+    

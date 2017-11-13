@@ -1,0 +1,59 @@
+
+        <!--底部信息-->
+        <div class="link_share">
+            <div class="link_share_content">
+                <ul class="link">
+                	<?php $nav = get_nav();?> 
+						{volist name="nav" id ="v"}
+                    <li>
+                        <a href="<?=url($v['link'],['id'=>$v['id']])?>"><?=$v.title?></a>
+                    </li>
+                    {/volist}
+                   <!-- <li>
+                        <a href=""> Winning Numbers  </a>
+                    </li>
+                    <li>
+                        <a href=""> Winners  </a>
+                    </li>
+                    <li>
+                        <a href="">How to Play</a>
+                    </li>-->
+                </ul>
+                <ul class="share" style="margin-top: 10px;">
+                	<div class="bshare-custom icon-medium-plus">
+                		<div class="bsPromo bsPromo2"></div>
+                		<a title="分享到Facebook" class="bshare-facebook" href="javascript:void(0);"></a>
+                		<a title="分享到飞信" class="bshare-feixin" href="javascript:void(0);"></a>
+                		<a title="分享到Twitter" class="bshare-twitter" href="javascript:void(0);"></a>
+                		<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                		<span class="BSHARE_COUNT bshare-share-count" style="float: none;">55.9K</span>
+                	</div>
+                	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+                	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                   <!-- <li>
+                        <a href="">
+                            <img src="/static/index/imgs/ff.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="/static/index/imgs/play.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="/static/index/imgs/bird.png" alt="">
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+            <i class="concluding_remarks">
+                If you gamble,use your GameSense
+            </i>
+        </div>
+        <!--底部信息-->
+    </div>
+
+    <!--顶部信息-->
+</body>
+</html>

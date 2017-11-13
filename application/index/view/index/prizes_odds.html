@@ -1,0 +1,173 @@
+{include file="base:header" title="prizes_olds";}
+<link type="text/css" rel="stylesheet" href="/static/index/css/prizes_odds.css"/>
+
+<!--主体左侧-->
+<div class="main_left">
+    <p class="title">
+        Canada Berse Prizes & Odds
+    </p>
+    <p>
+        Find out all the great Keno prizes available to be won and the odds of winning them.
+    </p>
+    <h1 class="title">
+        <span>Keno Prize Table & Odds</span>
+    </h1>
+    <p>
+        Match your Keno numbers to the numbers drawn to see if you win. Your prize will depend on how many numbers you picked and how many numbers you matched.
+    </p>
+
+    <table class="odds_tab1">
+        <tr>
+            <th>Numbers<br/>
+                Picked
+            </th>
+            <th>Numbers<br/>
+                Matched
+            </th>
+            <th>
+                Prize Amount<br/>
+                (for each $2 play)
+            </th>
+            <th>Odds*</th>
+            {volist name="t_number" id = "v" key="k"}
+        <tr>
+            <td><?=$v['keywords']?></td>
+
+            {volist name = "c_number" id = 'vo'  key="k1"}
+            {if $k eq $k1}
+            <td><?=$vo['0']?></td>
+            {/if}
+            {/volist}
+            {volist name ="str_new" id="vi" key="k3"}
+             {if $k3 eq $k}
+            <td>$<?=$vi?></td>
+             {/if}
+             {/volist}
+            {volist name ="arr_new" id="voo" key="k2"}
+            {if $k2 eq $k}
+            <td><?=sprintf("%01.2f", $voo*100).'%';?></td>
+            {/if}
+            {/volist}
+        </tr>
+        {/volist}
+        </tr>
+    </table>
+
+    <div class="approximate_odds">
+        <h1>*Approximate Odds</h1>
+        <h2>More Information</h2>
+        <p>The maximum prize that can be won on any one Keno ticket,
+            not including Keno Bonus, is $200,000, regardless of the amount wagered.
+            The maximum combined liability for a given draw is $2 million. If you've won a prize of more than $1,000,
+            the earliest you can claim your prize is the day after the draw.</p>
+    </div>
+
+    <h1 class="title">
+        <span>Keno Bonus Prize Table & Odds</span>
+    </h1>
+
+    <table class="odds_tab2 odds">
+        <tr>
+            <th>聽</th>
+            <th>1.5×</th>
+            <th>2×</th>
+            <th>5×</th>
+            <th>7×</th>
+            <th>10×</th>
+        <tr>
+            <td>Odds</td>
+            <td>1 in 2.0</td>
+            <td>1 in 2.2</td>
+            <td>1 in 24.7</td>
+            <td>1 in 49.4</td>
+            <td>1 in 346</td>
+        </tr>
+        </tr>
+    </table>
+    <div class="approximate_odds">
+        <h1>*Approximate Odds</h1>
+        <h2>More Information</h2>
+        <p>The maximum prize that can be won on a Keno ticket with Keno Bonus for any given draw is 10 times the value of the Keno prize.
+            If you've won a prize of more than $1,000, the earliest you can claim your prize is the day after the draw.</p>
+    </div>
+
+    <h1 class="title">
+        <span> Keno Pattern Play Prize Table & Odds</span>
+    </h1>
+    <p>Match your 40 Keno Pattern Play numbers to the numbers drawn to see if you win. </p>
+
+    <table class="odds_tab3">
+        <tr>
+            <th>Numbers<br/>
+                Matched</th>
+            <th>Prize Amount</th>
+            <th>Odds*/$2Play</th>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+        <tr>
+            <td>20 or 0</td>
+            <td>$50.000</td>
+            <td>1 in 12.823.377</td>
+        </tr>
+
+    </table>
+
+</div>
+<!--主体左侧-->
+
+<!--主体右侧区域-->
+<div class="main_right">
+    <i>Winning Numbers</i>
+    <a href="">Canada Berse</a>
+    <p class="date">monady,october 9.2017</p>
+    <p class="num">21920252200</p>
+</div>
+<!--主体右侧区域-->
+</div>
+<!--主题内容-->
+
+{include file="base:footer";}
+      

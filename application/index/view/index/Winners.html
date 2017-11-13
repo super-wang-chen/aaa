@@ -1,0 +1,187 @@
+{include file="base:header" title="winners"}
+    <link type="text/css" rel="stylesheet" href="/static/index/css/Winners.css"/>
+    <style type="text/css">
+        .page_list{
+            margin-top: 30px;
+        }
+    </style>
+
+
+            <!--主体左侧-->
+            <div class="main_left">
+                <p class="title">
+                    Keno Winners
+                </p>
+                <p>
+                    Discover the latest Keno winners and find out if you play the same way. Your lucky numbers could be up next! 
+                </p>
+
+                <ul class="winners_list">
+                    {volist name ="list" id = "v"}
+                    <li>
+                        <ul>
+                            <li><img src="<?=$v['pic']?>" alt="" width="320" height="170"/></li>
+                            <li>￥<?=$v['keywords']?></li>
+                            <li><?=$v['from']?></li>
+                            <li><?=$v['description']?></li>
+
+                        </ul>
+                    </li>
+                    {/volist}
+                  <!--  <li>
+                        <ul>
+                            <li><img src="/static/index/imgs/winners_photo.jpg" alt="" width="320" height="170"/></li>
+                            <li>￥745,813,348</li>
+                            <li>Lotto 6/49</li>
+                            <li>Marlis & Kurt G.</li>
+                            <li>Port Moody,BC</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><img src="/static/index/imgs/winners_photo.jpg" alt="" width="320" height="170"/></li>
+                            <li>￥745,813,348</li>
+                            <li>Lotto 6/49</li>
+                            <li>Marlis & Kurt G.</li>
+                            <li>Port Moody,BC</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><img src="/static/index/imgs/winners_photo.jpg" alt="" width="320" height="170"/></li>
+                            <li>￥745,813,348</li>
+                            <li>Lotto 6/49</li>
+                            <li>Marlis & Kurt G.</li>
+                            <li>Port Moody,BC</li>
+                        </ul>
+                    </li>
+-->
+                </ul>
+
+                <h1 class="title">
+                    <span>More Keno Winners</span>
+                </h1>
+
+
+                <table class="more_keno">
+                    <tr>
+                        <th>Date</th>
+                        <th>Winner</th>
+                        <th>City</th>
+                        <th>Game</th>
+                        <th>Prize</th>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 12, 2017</td>
+                        <td>Duane
+                            Schneider</td>
+                        <td>Calgary</td>
+                        <td>Keno</td>
+                        <td>$10,002.00</td>
+                    </tr>
+                </table>
+
+                <?=$page?>
+            </div>
+
+            <!--主体左侧-->
+
+            <!--主体右侧区域-->
+            <div class="main_right">
+                <i>Recent Winners</i>
+                <h4>￥745,813,348</h4>
+                <p>Total Lottery Prizes Won
+                    Last Year in BC</p>
+            </div>
+            <!--主体右侧区域-->
+         </div>
+        <!--主体内容-->
+{include file="base:footer";}
+<style>
+    .pagings{
+        text-align: center;
+        font-size: 14px;
+        height: 24px;
+
+    }
+    .pagings li{
+        margin-right:10px;
+        display:inline;
+    }
+    .pagings li a:hover{
+        color: #0E8F61;
+    }
+
+</style>

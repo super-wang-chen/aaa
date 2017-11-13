@@ -1,0 +1,105 @@
+{include file="base:header" title="home page"}
+
+        <!--主体内容-->
+      
+
+
+            <!--banner-->
+            <div class="banner">
+                <?php $banner = get_one('category',33);?>
+                <img src="<?=$banner['pic']?>" alt="" height="400" width="100%">
+            </div>
+            <!--banner-->
+
+            <!--今日彩票-->
+            <div class="today">
+                <div class="lottery">
+                    <i class="num">01</i>
+                    <span>Today the lottery</span>
+                    <a class="rule one" href="">
+                        <img src="/static/index/imgs/rule.png" alt="">
+                        I want to bet
+                    </a>
+                    <a class="rule" href="/index/index/content/id/91">
+                        <img src="/static/index/imgs/rule.png" alt="">
+                        How to Play
+                    </a>
+                </div>
+                <div class="canada_berse " style="margin: 18px auto 21px;">
+                    <span class="canada_berse_title">
+                        CanadaBerse
+                    </span>
+                    <ul class="winning_num">
+                    	{volist name = "list_array" id ="v" empty="暂时没有数据"}
+                    	<li><?=$v?></li>  
+                    	{/volist}                      
+                    </ul>
+                </div>
+                <div class="canada_berse">
+                    <p class="canada_berse_text">Prize pool accumulated:￥557,828,271</p>
+                    <p style="text-align: center;font-size: 14px">First prize 1754 note 12,742 yuan second prize 57268 note 167 yuan 9 177352 note 75 yuan</p>
+                </div>
+            </div>
+            <!--今日彩票-->
+
+            <!--最近获奖者-->
+            <div class="recent_winners">
+                <i class="num">02</i>
+                <p class="recent_winners_title">
+                    Recent Winners
+                </p>
+                <div class="how_much">
+                    <p class="number">￥<?=$news_list[0]['max1']?></p>
+                    Total Lottery Prizes Won
+                    Last Year in BC
+                </div>
+
+                <ul class="winners_list">
+                	{volist name ="news_winner" id = "vo"}
+                    <li style="background: url(/static/index/imgs/blue_bg.png)no-repeat;">
+                        <ul>
+                            <li style="font-size: 0"><img src="<?=$vo.pic?>" alt=""></li>
+                            <li style="font-size:14px;">￥<?=$vo.keywords?></li>
+                            <li><?=$vo.from?></li>
+                            <li><?=$vo.description?></li>                 
+                        </ul>
+                        <a href="<?=url('/index/index/news',['id'=>$vo['id']])?>">READ MORE</a>
+                    </li>
+                      {/volist}                  
+                </ul>
+
+                <a href="/index/index/news/id/90" class="more_winners">
+                    MORE WINNERS
+                </a>
+            </div>
+            <!--最近获奖者-->
+
+            <!--怎么玩-->
+            <div class="how_to_play">
+               <p class="how_play_title">
+                  <i class="num">03</i>
+                  <span>
+                      How to Play
+                  </span>
+               </p>
+
+                <ul class="rule_description">
+                	{volist name ="content_Play" id = "vi"}
+                    <li>
+                        <ul>
+                            <li><?=$vi.title?></li>
+                            <li style="font-weight: 700"><?=$vi.keywords?></li>
+                            <li><?=$vi.description?></li>
+                        </ul>
+                    </li>
+                    {/volist}          
+                </ul>
+
+                <a href="/index/index/content/id/91" class="learn_more">
+                    LEARN MORE
+                </a>
+            </div>
+            <!--怎么玩-->
+        </div>
+        <!--主体内容-->
+{include file="base:footer";}

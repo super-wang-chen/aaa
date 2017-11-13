@@ -1,0 +1,128 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h3 class="page-header"><i class="fa fa-user"></i>权限管理</h3>
+		<ol class="breadcrumb">
+			<li><i class="fa fa-home"></i>
+				<a href="<?=url('main')?>">Home</a>
+			</li>
+			<li><i class="fa fa-list-alt"></i>
+				栏目管理
+			</li>
+			<li><i class="fa fa-user"></i>添加栏目</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2><i class="fa fa-indent red"></i><strong>添加栏目基本信息</strong></h2>
+			</div>
+			<form action="<?=url('add_cate')?>" method="post" class="form-horizontal js_form">
+				<div class="panel-body">
+<?php
+	if(is_array($info)){
+?>
+	<input type="hidden" name="id" value="<?=$info['id']?>" />
+<?php
+	}
+?>
+					<div class="form-group">
+						<label class="col-md-3 control-label" for="text-input">栏目名</label>
+						<div class="col-md-9">
+							<input type="text" id="text-input" name="title" value="<?=$info['title']?>" class="form-control" placeholder="Title">
+							<span class="help-block">栏目名</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+				        <label class="col-md-3 control-label" for="select">栏目类型</label>
+				        <div class="col-md-9">
+				            <select id="select" name="link" class="form-control" size="1">
+				                {volist name="type_list" id="v"}
+				                	<option <?php if($v['k']==$info['link']){echo 'selected';} ?> value="<?=$v['k']?>"><?=$v['v']?></option>
+				                {/volist}
+				            </select>
+				            <span class="help-block">类型</span>
+				        </div>
+				   </div>
+					<div class="form-group">
+				        <label class="col-md-3 control-label" for="select">上级栏目</label>
+				        <div class="col-md-9">
+				            <select id="select" name="pid" class="form-control" size="1">
+				                <option value="0">--顶级栏目--</option>
+				                {volist name="cate_list" id="v"}
+				                	<option <?php if($v['id']==$info['id']){echo 'disabled';} ?> <?php if($v['id']==$info['pid']){echo 'selected';} ?> value="<?=$v['id']?>"><?=$v['title']?></option>
+				                {/volist}
+				            </select>
+				            <span class="help-block">父级栏目</span>
+				        </div>
+				    </div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" for="content">栏目内容</label>
+						<div class="col-md-9">
+							<?=ueditor('content',$info['content'])?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">导航显示</label>
+						<div class="col-md-1 col-sm-2 col-xs-3">
+							<label class="switch switch-primary">
+										      <input type="checkbox" name="show_nav" class="switch-input" <?php if($info['show_nav']==1){echo 'checked';}if($info['show_nav']!=0&$info['show_nav']==""){echo 'checked';} ?>>
+										      <span class="switch-label" data-on="On" data-off="Off"></span>
+										      <span class="switch-handle"></span>
+										    </label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">状态</label>
+						<div class="col-md-1 col-sm-2 col-xs-3">
+							<label class="switch switch-primary">
+										      <input type="checkbox" name="status" class="switch-input" <?php if($info['status']==1){echo 'checked';}if($info['status']!=0&$info['status']==""){echo 'checked';} ?>>
+										      <span class="switch-label" data-on="On" data-off="Off"></span>
+										      <span class="switch-handle"></span>
+										    </label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label"></label>
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> 提交</button>
+							<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+<script>
+	$(".js_form").ajaxForm({
+		//定义返回JSON数据，还包括xml和script格式
+		dataType: 'json',
+		beforeSend: function() {
+			var index = layer.load();
+			$("#layer_cache").attr("data-id", index);
+		},
+		beforeSerialize:function(){
+			
+		},
+		success: function(data) {
+			//提交成功后调用
+			index = $("#layer_cache").attr("data-id");
+			layer.close(index);
+			if(data.code == 1) {
+				layer.alert(data.msg, {
+					icon: 1
+				});
+			} else {
+				layer.alert(data.msg, {
+					icon: 2
+				});
+			}
+		}
+	});
+</script>

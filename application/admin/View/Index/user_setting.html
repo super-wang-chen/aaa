@@ -1,0 +1,140 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h3 class="page-header"><i class="fa fa-user"></i>添加用户</h3>
+		<ol class="breadcrumb">
+			<li><i class="fa fa-home"></i>
+				<a href="<?=url('main')?>">Home</a>
+			</li>
+			<li><i class="fa fa-list-alt"></i>
+				用户管理
+			</li>
+			<li><i class="fa fa-user"></i>添加用户</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2><i class="fa fa-table red"></i><span class="break"></span><strong>会员列表</strong></h2>
+							<div class="panel-actions">
+								<a href="<?=url('user_group')?>" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered">
+								  <thead>
+									  <tr>
+										  <th>ID</th>
+                                          <th>用户名</th>
+                                          <th>用户分组</th>
+										  <th>操作</th>                                          
+									  </tr>
+								  </thead>   
+								  <tbody>
+								  	{volist name="users_list" id="v"}
+										<tr>
+											<td><?=$v['id']?></td>
+	                                        <td><?=$v['name']?></td>
+	                                        <th><?=$v['title']?></th>
+											<td>
+												<span class="label label-success"><a href="<?=url('user_setting',array('id'=>$v['id']))?>">修改</a></span>
+											</td>                                       
+										</tr>
+									{/volist}	                                  
+								  </tbody>
+							 </table>  
+						</div>
+						<div class="panel-footer">
+							<?=$page?>
+						</div>
+					</div>
+				</div>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2><i class="fa fa-indent red"></i><strong>添加/修改会员信息</strong></h2>
+			</div>
+			<form action="<?=url('user_setting')?>" method="post" class="form-horizontal js_form">
+				<?php
+					if(is_array($info)){
+				?>
+					<input type="hidden" name="id" value="<?=$info['id']?>" />
+				<?php
+					}	
+				?>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-md-3 control-label" for="text-input">用户名</label>
+						<div class="col-md-9">
+								<input type="text" id="text-input" name="name" value="<?=$info['name']?>" class="form-control" placeholder="Name">
+								<span class="help-block">用户名</span>
+						</div>	
+					</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="text-input">密码</label>
+							<div class="col-md-9">
+									<input type="text" id="text-input" name="pass" class="form-control" placeholder="Password">
+									<span class="help-block">不修改保持空。新增用户为空密码默认为123456</span>
+							</div>	
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="text-input">分组选择</label>
+							<div class="col-md-9">
+								<select id="select" name="group_id" class="form-control" size="1">
+					                {volist name="list" id="v"}
+					                	<option <?php if($info['group_id']==$v['id']){echo 'selected';} ?> value="<?=$v['id']?>"><?=$v['title']?></option>
+					                {/volist}
+					            </select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label"></label>
+							<div class="col-md-2 col-sm-2 col-xs-3">
+								<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> 提交</button>
+								<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
+							</div>
+						</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+<script>
+	$(".js_form").ajaxForm({
+		//定义返回JSON数据，还包括xml和script格式
+		dataType: 'json',
+		beforeSend: function() {
+			//var index = layer.load();
+			//$("#layer_cache").attr("data-id", index);
+		},
+		beforeSerialize:function(){
+			
+		},
+		success: function(data) {
+			//提交成功后调用
+			index = $("#layer_cache").attr("data-id");
+			layer.close(index);
+			if(data.code == 1) {
+				var layer_u=layer.alert(data.msg, {
+					icon: 1
+				},function(){
+					layer.close(layer_u);
+					location_reload();
+				});
+			} else {
+				layer.alert(data.msg, {
+					icon: 2
+				});
+			}
+		}
+	});
+	function location_reload(){
+		$.post('<?=$now_url?>',{'_method':'get'},function(e){
+			$(".js_main").html(e);
+			$('html,body').animate({scrollTop: '0px'}, 500);
+		});
+	}
+</script>

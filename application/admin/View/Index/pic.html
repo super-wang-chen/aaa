@@ -1,0 +1,44 @@
+<?php $js_class_name='load_huploadify'.time().rand(100,200); ?>
+<div id="[jsname]" class="<?=$js_class_name?>"></div>
+<input type="hidden" name="[name]" value="[pic]" class="[jsname]input" />
+<img src="[pic]" class="[jsname]" style="max-width: 300px;max-height: 200px;" />
+<script>
+	$('.<?=$js_class_name?>').Huploadify({
+	//formData:{},
+	uploader: '/admin/Index/ck_upload.html',
+	fileTypeExts: '*.jpg;*.png;*.jpeg;*.gif',
+	auto: true,
+	onUploadStart: function() {
+		//alert('开始上传');
+		var old_pic=$(".[jsname]").attr('src');
+		if(old_pic!=''){
+			$.get('/admin/Index/del_pic.html',{name:old_pic},function(){});
+		}
+		console.log(old_pic);
+	},
+	onInit: function() {
+		//alert('初始化');
+		
+	},
+	onUploadComplete: function(e) {
+		//alert('上传完成');
+
+	},
+	onUploadSuccess: function(e, d) {
+		var d = JSON.parse(d);
+		if(d.code == 1) {
+			$(".[jsname]").attr('src', d.msg);
+			$(".[jsname]input").val(d.msg);
+		} else {
+			layer.alert(d.msg, {
+				icon: 2
+			});
+		}
+	},
+	onDelete: function(file) {
+		console.log('删除的文件：' + file);
+		console.log(file);
+	}
+});
+
+</script>

@@ -1,0 +1,17 @@
+  <!--左侧菜单-->
+            <div class="left_menu">
+                <h1><?=$title?></h1>
+               <?php $key = get_nav();?>
+                  {volist name = 'key' id= 'v'}
+                  {if condition = "$title eq $v['title']"}
+                <h2><?=$v['keywords']?></h2>
+                   {/if}
+                  {/volist}             
+                <ul>
+             <?php $nav1 = get_second_nav(input('id'));?>
+                	{volist name = "nav1" id="vo"}
+               <li><a href="<?=url($vo['link'],['id'=>$vo['pid'],'cid'=>$vo['id']])?>"><?=$vo.title?></a></li>
+                    {/volist}
+                </ul>
+            </div>
+            <!--左侧菜单-->
